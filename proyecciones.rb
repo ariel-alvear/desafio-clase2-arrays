@@ -1,6 +1,5 @@
 =begin 
 Pasos a seguir:
-3) crear un nuevo arreglo con los primeros 6 elementos aumentados un 10%
 4) sumar los elementos del arreglo
 5) Repetir de 1 a 4, pero en paso dos, en vez de un 10% a los primeros 6, se debe aumentar un 20% a los ultimos 6
 6) imprimir los 2 totales en un nuevo archivo con máximo 2 decimales
@@ -16,11 +15,24 @@ new_sales = []
 for i in (0..5)
     new_sales.push (sales_integer[i] * 1.1)
 end
+for i in (6..11)
+    new_sales.push (sales_integer[i])
+end
 
+new_sales2 = []
+for i in (0..5)
+    new_sales2.push (sales_integer[i])
+end
+for i in (6..11)
+    new_sales2.push (sales_integer[i]* 1.2)
+end
 
+sum1 = new_sales.sum
+sum2 = new_sales2.sum
+finalsum = [sum1, sum2]
 
-
-print new_sales
+File.new("resultados.data", "w")
+File.write('resultados.data', finalsum.join("\n"))
 
 
 
