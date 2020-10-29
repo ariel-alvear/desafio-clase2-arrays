@@ -1,9 +1,6 @@
-=begin 
-Pasos a seguir:
-7) convertir a metodo
 
-If we want to display floating point numbers we need to use %f. We can specify the number of decimal places we want like this: %0.2f.
-=end
+#If we want to display floating point numbers we need to use %f. We can specify the number of decimal places we want like this: %0.2f.
+
 #file es el nombre del arhivo
 #x es la primera posición del arreglo que queremos modificiar
 #y es la última posición del arreglo que queremos modificar
@@ -26,7 +23,7 @@ def sales_projections(file, x, y, z, a, b)
     for i in (first_position_nom..final_position_nom)
         new_sales.push (sales_integer[i])
     end
-    final_sum = [new_sales.sum]
+    final_sum = [('%.2f' % new_sales.sum)]
     File.new("resultados.data", "w")
     File.write('resultados.data', final_sum.join("\n"))
 end
