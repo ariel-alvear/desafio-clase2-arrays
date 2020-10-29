@@ -1,6 +1,3 @@
-
-#If we want to display floating point numbers we need to use %f. We can specify the number of decimal places we want like this: %0.2f.
-
 #file es el nombre del arhivo
 #x es la primera posición del arreglo que queremos modificiar
 #y es la última posición del arreglo que queremos modificar
