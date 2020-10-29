@@ -1,38 +1,37 @@
 =begin 
 Pasos a seguir:
-4) sumar los elementos del arreglo
-5) Repetir de 1 a 4, pero en paso dos, en vez de un 10% a los primeros 6, se debe aumentar un 20% a los ultimos 6
-6) imprimir los 2 totales en un nuevo archivo con máximo 2 decimales
 7) convertir a metodo
 
 If we want to display floating point numbers we need to use %f. We can specify the number of decimal places we want like this: %0.2f.
 =end
+#file es el nombre del arhivo
+#x es la primera posición del arreglo que queremos modificiar
+#y es la última posición del arreglo que queremos modificar
+#z es el modificador. (1.1 = aumentar 10%, 0.8 = disminuir 20%, etc)
+#a es la primera posición del arreglo que queremos mantener intacta
+#b es la última posición del arreglo que queremos mantener intacta
 
-
-sales_string = open('ventas_base.db').read.chomp.split(',') #tomamos datos de archivo externo y convertimos en arreglo
-sales_integer = sales_string.map { |x| x.to_i } #son integers ahora
-new_sales = []
-for i in (0..5)
-    new_sales.push (sales_integer[i] * 1.1)
+def sales_projections(file, x, y, z, a, b)
+    sales_string = open(file).read.chomp.split(',')
+    sales_integer = sales_string.map { |x| x.to_i }
+    new_sales = []
+    first_position_m = x
+    final_position_m = y
+    modifier = z
+    first_position_nom = a
+    final_position_nom = b
+    for i in (first_position_m..final_position_m)
+        new_sales.push (sales_integer[i] * z)
+    end
+    for i in (first_position_nom..final_position_nom)
+        new_sales.push (sales_integer[i])
+    end
+    final_sum = [new_sales.sum]
+    File.new("resultados.data", "w")
+    File.write('resultados.data', final_sum.join("\n"))
 end
-for i in (6..11)
-    new_sales.push (sales_integer[i])
-end
 
-new_sales2 = []
-for i in (0..5)
-    new_sales2.push (sales_integer[i])
-end
-for i in (6..11)
-    new_sales2.push (sales_integer[i]* 1.2)
-end
-
-sum1 = new_sales.sum
-sum2 = new_sales2.sum
-finalsum = [sum1, sum2]
-
-File.new("resultados.data", "w")
-File.write('resultados.data', finalsum.join("\n"))
+sales_projections('ventas_base.db', 0, 5, 1.1, 6, 11)
 
 
 
