@@ -24,5 +24,6 @@ def sales_projections(file, x, y, z)
 end
 
 sales_projections('ventas_base.db', 0, 5, 1.1)
+sales_projections('ventas_base.db', 6, 11, 1.2)
 
 

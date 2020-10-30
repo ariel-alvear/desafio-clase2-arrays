@@ -10,8 +10,7 @@ def higher_grade(arr)
     n = student_lenght.size
     student = []
     n.times do |i|
-        if i == 0
-        else
+        if i != 0
             student.push(student_lenght[i].to_i)
         end
     end
