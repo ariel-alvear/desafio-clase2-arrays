@@ -18,13 +18,21 @@ def chart(arr)
         print "\n"
     end
     k = 0
-    while k < border
-        print " #{k + 1}"
+    while k < border  #esto hace que el gráfico muestre 1 al llegar a 10, 2 al llegar a 20, n al llegar a n0. y el resto hace el conteo 1-9
+        x = (k + 1).to_s
+        if (k + 1) % 10 == 0
+            print " #{x[0]}"
+        elsif k >= 10
+            print " #{x[1]}"
+        else
+            print " #{k + 1}"
+        end
         k += 1
     end
     print "\n"
 end
 
-array = [5, 3, 2, 5, 10]
+array = ARGV.map {|x| x.to_i }
 
 chart(array)
+
