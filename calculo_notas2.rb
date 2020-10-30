@@ -1,25 +1,21 @@
 def higher_grade2(arr)
-    student_lenght = []
-    student_lenght = arr.split(',')
-    n = student_lenght.size
-    student = []
+    highest_ranks = []
+    n = arr.size
     n.times do |i|
-        if i != 0
-            student.push(student_lenght[i].to_i)
+        student_lenght = []
+        student_lenght = arr[i].split(',')
+        n1 = student_lenght.size
+        student = []
+        n1.times do |j|
+            if j != 0
+                student.push(student_lenght[j].to_i)
+            end
         end
+        highest_ranks << student.max
     end
-    highest_grade = student.max
-    highest_grade
+    highest_ranks
 end
 
 grades = open('notas.data').readlines
 
-n = grades.size
-
-highest_ranks = []
-
-n.times do |i|
-    highest_ranks << higher_grade2(grades[i])    
-end
-
-puts highest_ranks
+print higher_grade2(grades)
